@@ -1,0 +1,26 @@
+{
+  "name": "net.droidman.ohmyframework.core",
+  "version": "0.1.0",
+  "displayName": "oh my framework core",
+  "description": "oh my framework core common tools",
+  "unity": "2019.4",
+  "unityRelease": "14f1",
+  "dependencies": {
+    "com.unity.test-framework": "1.1.18",
+    "com.unity.textmeshpro": "2.1.1"
+ },
+ "keywords": [
+    "Framework",
+    "Utils",
+    "Tools"
+  ],
+  "author": {
+    "name": "WenyuanOuyang",
+    "email": "ouyangwenyuan@gmail.com",
+    "url": "https://github.com/ouyangwenyuan"
+  },
+  "repository": {
+    "url": "https://github.com/ouyangwenyuan/OhMyFramework",
+    "type": "git"
+  }
+}

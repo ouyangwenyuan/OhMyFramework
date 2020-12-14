@@ -70,7 +70,19 @@
       "version": "file:net.droidman.ohmyframework.core",
       "depth": 0,
       "source": "embedded",
-      "dependencies": {}
+      "dependencies": {
+        "com.unity.test-framework": "1.1.18",
+        "com.unity.textmeshpro": "2.1.1"
+      }
+    },
+    "net.droidman.ohmyframework.editor": {
+      "version": "file:net.droidman.ohmyframework.editor",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.18",
+        "com.unity.textmeshpro": "2.1.1"
+      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

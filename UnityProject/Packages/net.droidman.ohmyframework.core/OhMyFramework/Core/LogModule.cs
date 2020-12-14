@@ -77,15 +77,21 @@ namespace OhMyFramework.Core
         }
         public static void Log(string log, string tag = null, ELogType type = ELogType.NORMAL)
         {
-            string message = $"{GetCurrTime()}==>oywy/{tag}/{log}";
-            switch (type)
+            if (DebugMode)
             {
-                case ELogType.WARRNING:
-                    Debug.LogWarning(message); break;
-                case ELogType.ERROR:
-                    Debug.LogError(message); break;
-                default:
-                    Debug.Log(message); break;
+                string message = $"{GetCurrTime()}==>oywy/{tag}/{log}";
+                switch (type)
+                {
+                    case ELogType.WARRNING:
+                        Debug.LogWarning(message);
+                        break;
+                    case ELogType.ERROR:
+                        Debug.LogError(message);
+                        break;
+                    default:
+                        Debug.Log(message);
+                        break;
+                }
             }
         }
 

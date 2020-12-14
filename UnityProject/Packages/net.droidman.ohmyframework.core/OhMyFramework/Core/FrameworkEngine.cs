@@ -24,6 +24,9 @@ namespace OhMyFramework.Core
                 return _engineMono;
             }
         }
+        /// <summary>
+        ///  framework 初始化，可以多次调用
+        /// </summary>
         public static void Init()
         {
             if (isInit)
@@ -41,7 +44,6 @@ namespace OhMyFramework.Core
             LogModule.Log("ModuleManager.Container = " + ModuleManager.Container.ToString());
             LogModule.Log("ModuleManager = " + EngineMono.ModuleManager.ToString());
             isInit = true;
-            
         }
 
         public void UpdateConfigs()
@@ -59,7 +61,7 @@ namespace OhMyFramework.Core
             Object.Destroy(_engineMono.gameObject,0.5f);
         }
         
-        public static List<Assembly> CachedAssemblies { get; set; }
+        static List<Assembly> CachedAssemblies { get; set; }
         static FrameworkEngine()
         {
             LogModule.Log("FrameworkEngine constructor");
@@ -70,14 +72,14 @@ namespace OhMyFramework.Core
 
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                if (assembly.FullName.StartsWith("Assembly-CSharp") || assembly.FullName.StartsWith("Assembly-CSharp-Editor") || assembly.FullName.Contains("OhMyFramework"))
-                {
+//                if (assembly.FullName.StartsWith("Assembly-CSharp") || assembly.FullName.StartsWith("Assembly-CSharp-Editor") || assembly.FullName.Contains("OhMyFramework"))
+//                {
                     CachedAssembly(assembly);
-                }
+//                }
             }
         }
 
-        public static void CachedAssembly(Assembly assembly)
+        static void CachedAssembly(Assembly assembly)
         {
             if (CachedAssemblies.Contains(assembly)) return;
             CachedAssemblies.Add(assembly);

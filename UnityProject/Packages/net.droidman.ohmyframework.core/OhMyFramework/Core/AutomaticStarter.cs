@@ -2,8 +2,6 @@ using UnityEngine;
 
 namespace OhMyFramework.Core
 {
-
-
     public static class AutomaticStarter
     {
         /// <summary>
