@@ -36,7 +36,7 @@ public class OhMyFrameworkPanel : EditorWindow
     Color selectionColor;
     Color bgColor;
 
-    [MenuItem("Window/OhMyFramework Panel &F")]
+    [MenuItem("Window/OhMyFramework/OhMyFramework Panel &F")]
     public static OhMyFrameworkPanel CreateBerryPanel()
     {
         OhMyFrameworkPanel window;
@@ -330,7 +330,7 @@ public class OhMyFrameworkPanel : EditorWindow
     {
         if (current_editor != null)
         {
-            current_editor.OnLostFoce();
+            current_editor.OnLostFocus();
         }
     }
 }

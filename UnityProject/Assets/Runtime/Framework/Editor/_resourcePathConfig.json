@@ -1,0 +1,45 @@
+{
+    "readme": [
+        ["配置", "为方便查看配置以数组形式存储，第一个为Assets目录下的相对目录名，第二个为选择文件的正则表达式(忽略大小写)，第三个为是否递归目录选择"],
+        ["Atlas", "包含Atlas_White排除Atlas_Black中的文件"],
+        ["RawTexture", "包含RawTexture_White排除RawTexture_Black中的文件"],
+        ["Sprite", "包含Sprite_White排除Sprite_Black中的文件，再排除Atlas_White依赖的Sprite文件"],
+        ["建议", "若规划合理，这个配置会很简洁；也只需要配置一次(正则表达式可以让程序帮忙配置)"]
+    ],
+    
+    "Atlas_White": [
+        ["Export/SpriteAtlas", "\\.spriteatlas$", true]
+    ],
+
+    "Atlas_Black": [
+        
+    ],
+
+    "RawTexture_White": [
+
+    ],
+
+    "RawTexture_Black": [
+
+    ],
+
+    "Sprite_White": [
+        ["Res/UI/LoadingTextures", "\\.((png)|(jpg))$", true]
+    ],
+
+    "Sprite_Black": [
+
+    ],
+
+    "Prefab_White": [
+        ["", "\\.prefab$", true],
+        ["", "\\.mat$", true],
+        ["", "\\.anim$", true],
+        ["", "\\.controller", true],
+        ["Export/SpriteAtlas", "\\.spriteatlas$", true]
+    ],
+
+    "Prefab_Black": [
+
+    ]
+}

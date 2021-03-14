@@ -13,4 +13,65 @@ MonoBehaviour:
   m_Name: OmfSettings
   m_EditorClassIdentifier: 
   _isEnabled: 1
-  ResUrl: http://127.0.0.1:8000
+  ResUrl: 
+  GEN_CODE_PATH: Runtime/Games
+  customLayers:
+  - War_Terrain
+  - War_Unit
+  - War_Obstacle
+  - Background
+  - Background1
+  - UI1
+  - UI2
+  - Foreground
+  - Foreground1
+  - Guide
+  - Guide1
+  - Avatar
+  - Avatar1
+  - Effect
+  - Effect1
+  - Text
+  - Debug
+  - Environments
+  - Buildings
+  - Enemies
+  - Teammates
+  - Characters
+  - Protagonists
+  - Players
+  customTags:
+  - Except
+  - Export
+  - Environments
+  - Buildings
+  - Enemies
+  - Teammates
+  - Cameras
+  - Characters
+  - Lights
+  - Protagonists
+  - Players
+  - UICamera
+  - War_Terrain
+  - War_Unit
+  userPathData:
+    mOnToggles:
+    - Prefabs
+    - FxPrefabs
+    - Sounds
+    - Materials
+    - Textures
+    - UiSprites
+    - Animations
+    - BuildTools
+    - GenCode
+    - Configs
+    - Download
+    - Shader
+    dataPath: /Users/ouyangwenyuan/Amateur/githubProject/OhMyFramework/UnityProject/Assets
+    persistentDataPath: /Users/ouyangwenyuan/Library/Application Support/DefaultCompany/UnityProject
+    streamingAssetsPath: /Users/ouyangwenyuan/Amateur/githubProject/OhMyFramework/UnityProject/Assets/StreamingAssets
+    consoleLogPath: /Users/ouyangwenyuan/Library/Logs/Unity/Editor.log
+    temporaryCachePath: /var/folders/9n/4td807rn2078vdqd_whvwm080000gp/T/DefaultCompany/UnityProject
+    mUseDefault: 1

@@ -64,29 +64,24 @@ namespace OhMyFramework.Core
                 view.Init(Container);
             }
 
-            foreach (var view in _subModules)
-            {
-                container.Inject(view);
-            }
+//            foreach (var view in _subModules)
+//            {
+//                container.Inject(view);
+//            }
         }
         public void Awake()
         {
              _subModules.FindAll(x=> x is ASubModule).ForEach(x=>(x as ASubModule)?.Awake());
         }
 
-        public void FixedUpdate()
-        {
-            
-        }
-
         public void LateUpdate()
         {
-            
+             _subModules.FindAll(x=> x is ASubModule).ForEach(x=>(x as ASubModule)?.LateUpdate());
         }
 
         public void OnApplicationPause(bool pauseStatus)
         {
-            
+            _subModules.FindAll(x=> x is ASubModule).ForEach(x=>(x as ASubModule)?.OnApplicationPause(pauseStatus));
         }
 
         public void OnApplicationQuit()
@@ -96,7 +91,7 @@ namespace OhMyFramework.Core
 
         public void OnDestroy()
         {
-            _subModules.FindAll(x=> x is ASubModule).ForEach(x=>x.Destory());
+            _subModules.ForEach(x=>x.Destroy());
             _container.Dispose();
         }
 

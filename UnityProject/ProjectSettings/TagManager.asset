@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Except
+  - Export
+  - Environments
+  - Buildings
+  - Enemies
+  - Teammates
+  - Cameras
+  - Characters
+  - Lights
+  - Protagonists
+  - Players
+  - UICamera
+  - War_Terrain
+  - War_Unit
   layers:
   - Default
   - TransparentFX
@@ -13,31 +27,82 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - War_Terrain
+  - War_Unit
+  - War_Obstacle
+  - Background
+  - Background1
+  - UI1
+  - UI2
+  - Foreground
+  - Foreground1
+  - Guide
+  - Guide1
+  - Avatar
+  - Avatar1
+  - Effect
+  - Effect1
+  - Text
+  - Debug
+  - Environments
+  - Buildings
+  - Enemies
+  - Teammates
+  - Characters
+  - Protagonists
+  - Players
   m_SortingLayers:
+  - name: War_Terrain
+    uniqueID: 536870912
+    locked: 0
+  - name: War_Shadow
+    uniqueID: 1073741824
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: War_Unit
+    uniqueID: 1
+    locked: 0
+  - name: Background
+    uniqueID: 2
+    locked: 0
+  - name: Background1
+    uniqueID: 4
+    locked: 0
+  - name: UI
+    uniqueID: 8
+    locked: 0
+  - name: UI1
+    uniqueID: 16
+    locked: 0
+  - name: Foreground
+    uniqueID: 32
+    locked: 0
+  - name: Foreground1
+    uniqueID: 64
+    locked: 0
+  - name: Guide
+    uniqueID: 128
+    locked: 0
+  - name: Guide1
+    uniqueID: 256
+    locked: 0
+  - name: Avatar
+    uniqueID: 512
+    locked: 0
+  - name: Avatar1
+    uniqueID: 1024
+    locked: 0
+  - name: Effect
+    uniqueID: 2048
+    locked: 0
+  - name: Effect1
+    uniqueID: 4096
+    locked: 0
+  - name: Text
+    uniqueID: 8192
+    locked: 0
+  - name: Debug
+    uniqueID: 16384
     locked: 0

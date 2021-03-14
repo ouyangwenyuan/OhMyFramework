@@ -2,6 +2,7 @@ namespace OhMyFramework.Editor
 {
     public class MenuPathConst
     {
-        public const string OhMyFrameworkConfigs = "OhMyFramework/ConfigsWindow &C W";
+        //% : command/ctrl ,# : shift, &: option
+        public const string OhMyFrameworkConfigs = "Window/OhMyFramework/SettingWindow %&C";
     }
 }

@@ -20,11 +20,6 @@ namespace OhMyFramework.Core
             LogModule.Log($"Awake {GetType().Name}");
         }
 
-        private void FixedUpdate()
-        {
-            _moduleManager.FixedUpdate();
-        }
-
         private void LateUpdate()
         {
             _moduleManager.LateUpdate();

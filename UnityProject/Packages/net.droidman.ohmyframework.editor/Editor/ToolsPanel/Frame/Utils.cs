@@ -43,24 +43,24 @@ namespace OhMyFramework.Editor
     }
 
     public interface IModuleEditor {
-        void OnGUI();
         bool Initialize();
+        void OnGUI();
         void OnFocus();
-        void OnLostFoce();
+        void OnLostFocus();
     }
 
     public abstract class ModuleEditor<T> : IModuleEditor where T : MonoBehaviour {
 
-        public abstract void OnGUI();
         public abstract bool Initialize();
+        public abstract void OnGUI();
 
         public static void Repaint() {
             OhMyFrameworkPanel.RepaintAll();
         }
 
-        public abstract void OnLostFoce();
-
         public virtual void OnFocus() { }
+        public abstract void OnLostFocus();
+
     }
 
 // public abstract class MetaEditor : MetaEditor<MonoBehaviour> {}
@@ -417,7 +417,9 @@ namespace OhMyFramework.Editor
                     onChanged.Invoke();
             }
         }
-
+        /// <summary>
+        /// 滑动分栏
+        /// </summary>
         public class LayoutSplitter {
             int resize = -1;
             int current = 0;

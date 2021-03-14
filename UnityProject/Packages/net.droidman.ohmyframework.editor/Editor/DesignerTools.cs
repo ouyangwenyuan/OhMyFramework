@@ -121,12 +121,39 @@ public partial class #Name#Controller {
 */
 ";
     private static readonly Dictionary<string, string> SimplifyNameDictionary = new Dictionary<string, string> { { "LocalizeTextMeshProUGUI", "TextMesh" },
-        { " ", "" },
+        { " ", "_" },
+        { "`", "_" },
+        { "~", "_" },
+        { "!", "_" },
+        { "@", "_" },
+        { "#", "_" },
+        { "$", "_" },
+        { "%", "_" },
+        { "^", "_" },
+        { "&", "_" },
+        { "*", "_" },
+        { "(", "_" },
+        { ")", "_" },
         { "-", "_" },
-        { "(", "" },
-        { ")", "" },
-        { "*", "x" },
-        { "%", "" },
+        { "+", "_" },
+        { "=", "_" },
+        { "{", "_" },
+        { "}", "_" },
+        { "[", "_" },
+        { "]", "_" },
+        { "|", "_" },
+        { "\\", "_" },
+        { ":", "_" },
+        { ";", "_" },
+        { "\"", "_" },
+        { "'", "_" },
+        { "?", "_" },
+        { "/", "_" },
+        { "<", "_" },
+        { ">", "_" },
+        { ",", "_" },
+        { ".", "_" },
+        { "\n", "_" },
     };
 
     /// <summary>
@@ -137,7 +164,7 @@ public partial class #Name#Controller {
         // { "DragonPlus.", "" },
     };
 
-    private static string SimplifyName (string name) {
+    public static string SimplifyName (string name) {
         var newName = SimplifyNameDictionary.Aggregate (name, (current, n) => current.Replace (n.Key, n.Value));
         newName = newName.Substring(0, 1).ToUpper() + newName.Substring(1);
         return newName;

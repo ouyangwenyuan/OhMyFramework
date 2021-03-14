@@ -6,9 +6,10 @@ namespace OhMyFramework.Core
         public void Init(IQFrameworkContainer mContainer)
         {
             FrameworkContainer = mContainer;
+            mContainer.Inject(this);
         }
 
-        public void Destory()
+        public virtual void Destroy()
         {
            
         }
@@ -17,5 +18,8 @@ namespace OhMyFramework.Core
         public virtual void Start(){}
 
         public virtual  void Update(){}
+        
+        public virtual  void LateUpdate(){}
+        public virtual  void OnApplicationPause(bool isPause){}
     }
 }

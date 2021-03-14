@@ -5,7 +5,9 @@ using UnityEditor;
 #endif
 namespace OhMyFramework.Core
 {
-    
+    /// <summary>
+    /// setting in code 
+    /// </summary>
     [UnityEngine.CreateAssetMenu(fileName = "OmfConfigs", menuName = "OmfConfigs", order = 0)]
     public class OmfConfigs : UnityEngine.ScriptableObject
     {

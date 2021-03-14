@@ -1,13 +1,13 @@
 namespace OhMyFramework.Core
 {
-    interface ISubModule 
+    public interface ISubModule 
     {
         // 游戏启动时
         void Init(IQFrameworkContainer mContainer);
 
 
         // 游戏终止
-        void Destory();
+        void Destroy();
     }
     
     

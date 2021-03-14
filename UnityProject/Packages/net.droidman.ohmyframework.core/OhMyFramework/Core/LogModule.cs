@@ -1,19 +1,14 @@
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace OhMyFramework.Core
 {
-    public enum ELogType
+    public class LogModule : ASubModule 
     {
-        NORMAL,
-        WARRNING,
-        ERROR
-    }
-
-    public class LogModule : ASubModule, ILogHandler
-    {
+        private const string logDivide = "=>";
         public override void Awake()
         {
             base.Awake();
@@ -26,16 +21,22 @@ namespace OhMyFramework.Core
             }
             InitLogTxt();
             
-            Application.logMessageReceived += LogCallback;
             AppDomain.CurrentDomain.UnhandledException += OnUnresolvedExceptionHandler;
-            originalLogHandler = Debug.unityLogger.logHandler;
-            Debug.unityLogger.logHandler = this;
+            Application.logMessageReceived += LogCallback;
+//            originalLogHandler = Debug.unityLogger.logHandler;
+//            Debug.unityLogger.logHandler = this;
         }
 
         public override void Start()
         {
             base.Start();
             Debug.Log($"Start {GetType().Name}");
+        }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+            Application.logMessageReceived -= LogCallback;
         }
         
         /// <summary>
@@ -51,47 +52,40 @@ namespace OhMyFramework.Core
         {
             return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff");
         }
- 
-        public static void Log(object str)
-        {
-            if (DebugMode)
-            {
-                Debug.Log(GetCurrTime() + "==>" + str);
+        
+//        public static void Log(string log,  LogType type = LogType.Log)
+//        {
+//            if (DebugMode)
+//            {
+//                string message = $"omf{logDivide}{log}";
+//                switch (type)
+//                {
+//                    case LogType.Warning:
+//                        Debug.LogWarning(message);
+//                        break;
+//                    case LogType.Error:
+//                    case LogType.Exception:
+//                        Debug.LogError(message);
+//                        break;
+//                    default:
+//                        Debug.Log(message);
+//                        break;
+//                }
+//            }
+//        }
+        public static void Log(string msg,LogType logLevel = LogType.Log, bool releaseLog = false,[CallerFilePath]string file = null,[CallerMemberName]string name = null,[CallerLineNumber]int line = 0) {
+            if(Debug.isDebugBuild){
+                file = file?.Substring(file.LastIndexOf('/'));
+                string message = $"oywy{file}({line}).{name}::{msg}";
+                if (logLevel == LogType.Error)
+                    Debug.LogError ($"<color=#ff99ff>{message}</color>");
+                else if (logLevel == LogType.Warning)
+                    Debug.LogWarning ($"<color=#FFFF66>{message}</color>");
+                else
+                    Debug.Log ($"<color=#00BB00>{message}</color>");
             }
-        }
- 
-        public static void LogWarning(object str)
-        {
-            if (DebugMode)
-            {
-                Debug.LogWarning(GetCurrTime() + "==>" + str);
-            }
-        }
-
-        public static void LogError(object str)
-        {
-            if (DebugMode)
-            {
-                Debug.LogError(GetCurrTime() + "==>" + str);
-            }
-        }
-        public static void Log(string log, string tag = null, ELogType type = ELogType.NORMAL)
-        {
-            if (DebugMode)
-            {
-                string message = $"{GetCurrTime()}==>oywy/{tag}/{log}";
-                switch (type)
-                {
-                    case ELogType.WARRNING:
-                        Debug.LogWarning(message);
-                        break;
-                    case ELogType.ERROR:
-                        Debug.LogError(message);
-                        break;
-                    default:
-                        Debug.Log(message);
-                        break;
-                }
+            if(releaseLog){ //打 release 仍可见的log，以LogError输出
+                Debug.LogError($"oywy{file}({line}).{name}::{msg}");
             }
         }
 
@@ -135,48 +129,48 @@ namespace OhMyFramework.Core
         private static void LogCallback(string condition, string stackTrace, LogType type)
         {
             if (DebugMode)
-            {//Debug not output log
-                return;;
+            {
+                //Debug not output log
+                return;
             }
             if (type == LogType.Error || type == LogType.Assert || type == LogType.Exception)
             {
-                LogStr = "[" + type + "]" + GetCurrTime() + "==>" + condition + " : " + stackTrace;
-                WriteLogTxt(LogStr);
-            }
-            else
-            {
-                LogStr = "[" + type + "]" + GetCurrTime() + "==>" + condition;
+                LogStr = GetCurrTime() + logDivide + condition + logDivide + stackTrace;
                 WriteLogTxt(LogStr);
             }
         }
         
         private static void OnUnresolvedExceptionHandler(object sender, UnhandledExceptionEventArgs e)
         {
-            Debug.Log("UnhandledExceptionEventArgs" + e);
-            throw new NotImplementedException();
+            Log("Catch UnhandledExceptionEventArgs" + e);
+            WriteLogTxt(e.ToString());
+//            throw new NotImplementedException();
         }
 
-        public void LogFormat(LogType type, Object context, string format, params object[] args)
-        {
-            if (DebugMode)
-            {//Debug not output log
-                return;;
-            }
-            LogStr = "[" + type + "]" + GetCurrTime() + "==>" + string.Format(format,args);
-            WriteLogTxt(LogStr);
-            originalLogHandler.LogFormat(type, context, format, args);
-        }
+//        public void LogFormat(LogType type, Object context, string format, params object[] args)
+//        {
+//            if (DebugMode)
+//            {
+//                originalLogHandler.LogFormat(type, context, format, args);
+//                return;
+//            }
+//
+//            if (type == LogType.Error)
+//            {
+//                LogStr = GetCurrTime() + logDivide + string.Format(format,args);
+//                WriteLogTxt(LogStr);
+//            }
+//        }
 
-        public void LogException(Exception exception, Object context)
-        {
-            if (DebugMode)
-            {//Debug not output log
-                return;;
-            }
-            LogStr =  GetCurrTime() + "==>" + exception;
-            WriteLogTxt(LogStr);
-            
-            originalLogHandler.LogException(exception, context);
-        }
+//        public void LogException(Exception exception, Object context)
+//        {
+//            if (DebugMode)
+//            {
+//                originalLogHandler.LogException(exception, context);
+//                return;
+//            }
+//            LogStr =  GetCurrTime() + logDivide + exception.Message;
+//            WriteLogTxt(LogStr);
+//        }
     }
 }
